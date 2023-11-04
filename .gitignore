@@ -1,2 +1,5 @@
 *.json
 result
+__pycache__
+runner*
+test
