@@ -17,7 +17,7 @@ def radioscrape():
     utc_tstamps = [local.localize(x).astimezone(pytz.utc).strftime('%Y-%m-%d %H:%M:%S %z') for x in timestamps]
     length = [x['length'] if x['length'] != '' else None for x in player]
     rec = []
-    exclude = ['WORLD IS MINE RADIO SHOW', '', 'DISCO\'S HIT', 'RADIO 1', 'RÁDIO 1 LIVE MIX']
+    exclude = ['WORLD IS MINE RADIO SHOW', '', 'DISCO\'S HIT', 'RADIO 1', 'RÁDIO 1 LIVE MIX', 'RÁDIÓ 1 LIVE MIX','RÁDIÓ 1 WEEKEND AFTER', 'RÁDIÓ 1 WEEKEND BEFORE']
     for i in range(len(utc_tstamps)):
         if artists[i][0] not in exclude:
             rec.append({
@@ -28,7 +28,7 @@ def radioscrape():
                 'updated_dt': local.localize(datetime.now()).astimezone(pytz.utc).strftime('%Y-%m-%d %H:%M:%S %z')})
         else:
             print("Not loading: ", artists[i],' - ', titles[i])
-    
+
     return rec
 
 def loader():
